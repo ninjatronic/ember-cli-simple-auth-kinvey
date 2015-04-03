@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-simple-auth-kinvey",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Kinvey integration for Ember Simple Auth",
   "directories": {
     "test": "tests"
