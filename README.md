@@ -1,25 +1,61 @@
-# Ember-cli-simple-auth-kinvey
+# ember-cli-simple-auth-kinvey
 
-This README outlines the details of collaborating on this Ember addon.
+> Ember Simple Auth integration for Kinvey
 
 ## Installation
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+```
+ember install:addon ember-cli-simple-auth-kinvey
+```
 
-## Running
+## Configuration
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+```javascript
+// config/environment.js
+module.exports = function(environment) {
+  var ENV = {
+    // ...
+    'simple-auth': {
+      authorizer: 'simple-auth-authorizer:kinvey',
+      crossOriginWhitelist: ['https://baas.kinvey.com']
+    },
 
-## Running Tests
+    'simple-auth-kinvey': {
+      appKey: 'appKey',
+      appSecret: 'appSecret',
+    }
+    // ...
+  },
+  // ...
+};
+```
 
-* `ember test`
-* `ember test --server`
+## Usage
 
-## Building
+### Login
 
-* `ember build`
+```javascript
+//...
+this.get('session').authenticate('simple-auth-authenticator:kinvey', {
+  username: username,
+  password: password
+});
+```
 
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+### Signup
+
+```javascript
+//...
+this.get('session').authenticate('simple-auth-authenticator:kinvey', {
+  username: username,
+  password: password,
+  _isSignup: true
+});
+```
+
+### Logout
+
+```javascript
+//...
+this.get('session').invalidate();
+```
